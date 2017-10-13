@@ -25,7 +25,7 @@ int Monster_init(void *self) {
 }
 
 Object MonsterProto = {
-    .init = Monster_init, 
+    .init = Monster_init,
     .attack = Monster_attack
 };
 
@@ -72,15 +72,17 @@ int Room_attack(void *self, int damage) {
 int Room_hasMonster(void *self) {
     Room *room = self;
     if(room->bad_guy) {
+        printf("This room has a monster");
         return 1;
     } else {
+        printf("This room has no monsters");
         return 0;
     }
 }
 
 Object RoomProto = {
     .move = Room_move,
-    .attack = Room_attack, 
+    .attack = Room_attack,
     .hasMonster = Room_hasMonster
 };
 
@@ -120,7 +122,7 @@ int Map_init(void *self) {
     bathroom->bad_guy = NEW(Monster, "Moaning Myrtle");
 
     hall->north = throne;
-    
+
     throne->west = arena;
     throne->east = kitchen;
     throne->south = hall;
@@ -144,8 +146,8 @@ int Map_init(void *self) {
 }
 
 Object MapProto = {
-    .init = Map_init, 
-    .move = Map_move, 
+    .init = Map_init,
+    .move = Map_move,
     .attack = Map_attack
 };
 
@@ -163,19 +165,19 @@ int process_input(Map *game) {
             game->_(destroy)(game);
             exit(1);
             break;
-        
+
         case 'n':
             game->_(move)(game, NORTH);
             break;
-        
+
         case 's':
             game->_(move)(game, SOUTH);
             break;
-        
+
         case 'e':
             game->_(move)(game, EAST);
             break;
-        
+
         case 'w':
             game->_(move)(game, WEST);
             break;
@@ -183,7 +185,7 @@ int process_input(Map *game) {
         case 'a':
             game->_(attack)(game, damage);
             break;
-        
+
         case 'l':
             printf("You can go:\n");
             if(game->location->north) printf("NORTH\n");
@@ -191,9 +193,9 @@ int process_input(Map *game) {
             if(game->location->east) printf("EAST\n");
             if(game->location->west) printf("WEST\n");
             break;
-        
+
         case 'm':
-            game->location->_(describe)(game->location);
+            game->location->_(hasMonster)(game->location);
             break;
 
         default:

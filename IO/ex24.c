@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     printf("How old are you?");
     int rc = fscanf(stdin, "%d", &you.age);
     if(rc <= 0) {
-        printf("You have to enter a number");
+        printf("You have to enter a positive number");
     }
 
     printf("What color are your eyes?");

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../debugger/dbg.h"
+#include "../src/dbg.h"
 #include <dlfcn.h>
 
 typedef int (*lib_function)(const char *data);

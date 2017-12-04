@@ -27,6 +27,7 @@ int is_sorted(List *words) {
 }
 
 char *test_bubble_sort() {
+  printf("Running the bubble sort test\n");
   List *words = create_words();
 
   int rc = List_bubble_sort(words, (List_compare)strcmp);
@@ -60,11 +61,23 @@ char *test_merge_sort() {
   return NULL;
 }
 
+char *test_insert_sorted() {
+  printf("Running the inserted sort test\n");
+  List *list = List_create();
+
+  List *res = List_insert_sort(list, (List_compare)strcmp, values, NUM_VALUES);
+  mu_assert(is_sorted(res), "Words are not sorted after insert sort");
+
+  List_destroy(list);
+  return NULL;
+}
+
 char *all_tests() {
   mu_suite_start();
 
   mu_run_test(test_bubble_sort);
-  mu_run_test(test_merge_sort);
+  // mu_run_test(test_merge_sort);
+  mu_run_test(test_insert_sorted);
 
   return NULL;
 }

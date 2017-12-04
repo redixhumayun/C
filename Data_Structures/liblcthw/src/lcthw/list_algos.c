@@ -117,3 +117,45 @@ List *List_merge_sort(List *list, List_compare cmp) {
   List *res = TopDownMergeSort(list, 0, List_count(list), cmp);
   return res;
 }
+
+void List_push_custom(List *list, List_compare cmp, void *value) {
+  printf("Entering value: %s\n", value);
+  ListNode *node = calloc(1, sizeof(ListNode));
+  node->value = value;
+
+  if(list->first == NULL) {
+    list->first = node;
+    list->last = node;
+    List_print(list);
+    return;
+  }
+
+  //iterate over list to find where to insert given value
+  int swap_flag = 0;
+  LIST_FOREACH(list, first, next, cur) {
+    if(cmp(cur->value, node->value) > 0) { //cur is greater than value
+      swap_flag = 1;
+      ListNode *temp = cur->next;
+      cur->next = node;
+      node->prev = cur;
+      node->next = temp;
+      ListNode_swap(cur, node);
+    }
+  }
+
+  if(swap_flag == 0) { //insert value in the last position
+    printf("Need to insert: %s\n", node->value);
+    printf("The last value is: %s\n", list->last->value);
+  }
+
+  List_print(list);
+  return;
+}
+
+List *List_insert_sort(List *list, List_compare cmp, char *values[], int NUM_VALUES) {
+  int i = 0;
+  for(i = 0; i < NUM_VALUES; i++) {
+    List_push_custom(list, cmp, values[i]);
+  }
+  return list;
+}

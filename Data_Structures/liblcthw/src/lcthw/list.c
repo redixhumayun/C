@@ -5,6 +5,14 @@ List *List_create() {
   return calloc(1, sizeof(List));
 }
 
+void List_print(List *list) {
+  printf("*********Printing List*********\n");
+  LIST_FOREACH(list, first, next, cur) {
+    printf("%s\n", cur->value);
+  }
+  printf("*********End Of Printing List*********\n");
+}
+
 void List_destroy(List *list) {
   LIST_FOREACH(list, first, next, cur) {
     if(cur->prev) {

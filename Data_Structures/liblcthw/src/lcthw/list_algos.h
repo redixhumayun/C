@@ -14,5 +14,9 @@ List *TopDownMergeSort(List *list, int begin, int end, List_compare cmp);
 
 List *List_merge_sort(List *list, List_compare cmp);
 
+List *List_insert_sort(List *list, List_compare cmp, char *values[], int NUM_VALUES);
+
+void List_push_custom(List *list, List_compare cmp, void *value);
+
 
 #endif

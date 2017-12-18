@@ -1,7 +1,0 @@
-DEBUG tests/list_algos_tests.c:85:main: ----- RUNNING: ./tests/list_algos_tests
-DEBUG tests/list_algos_tests.c:78:all_tests: 
------ test_bubble_sort
-DEBUG tests/list_algos_tests.c:80:all_tests: 
------ test_insert_sorted
-list_algos_tests(98288,0x7fff8ef09340) malloc: *** error for object 0x7fd34fc026c0: pointer being freed was not allocated
-*** set a breakpoint in malloc_error_break to debug

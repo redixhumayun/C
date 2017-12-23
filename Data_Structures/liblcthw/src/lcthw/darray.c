@@ -1,8 +1,8 @@
-#include <lcthw/darray.h>
+#include "./darray.h"
 #include <assert.h>
 
 DArray *DArray_create(size_t element_size, size_t initial_max) {
-  DArray *array = malloc(sizeof(DArray));
+  DArray *array = (DArray *)malloc(sizeof(DArray));
   check_mem(array);
   array->max = initial_max;
   check(array->max > 0, "Initial max must be greater than 0");
@@ -38,7 +38,7 @@ int DArray_expand(DArray *array) {
   array->max = new_size;
   void *contents = realloc(array->contents, array->max * sizeof(void *));
   check_mem(contents);
-  array->contents = contents;
+  array->contents = &contents;
   return 0;
 error:
   return -1;

@@ -68,6 +68,11 @@ char *test_push_pop() {
     *val = i * 333;
     DArray_push(array, val);
   }
+  // printf("Printing array values\n");
+  // for(i = 0; i < 1000; i++) {
+  //   printf("%d\n", ((int)(array->contents[i])));
+  // }
+  // printf("End of printing array values\n");
 
   mu_assert(array->max == 1000, "Wrong max size");
 

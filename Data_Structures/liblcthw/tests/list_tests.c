@@ -87,12 +87,12 @@ char *all_tests() {
   printf("Running all_tests\n");
   mu_suite_start();
 
-  mu_run_test(test_create);
-  mu_run_test(test_push_pop);
-  mu_run_test(test_shift);
-  // mu_run_test(test_remove);
-  mu_run_test(test_unshift);
-  mu_run_test(test_destroy);
+  // mu_run_test(test_create);
+  // mu_run_test(test_push_pop);
+  // mu_run_test(test_shift);
+  // // mu_run_test(test_remove);
+  // mu_run_test(test_unshift);
+  // mu_run_test(test_destroy);
 
   return NULL;
 }

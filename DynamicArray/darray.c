@@ -48,6 +48,27 @@ void DArray_msort(DArray *array) {
   msort(array->contents, 0, array->end - 1);
 }
 
+int DArray_binarySearch(DArray *array, int toFind) {
+  return binarySearch(array->contents, 0, array->end-1, toFind);
+}
+
+int binarySearch(int *contents, int low, int high, int toFind) {
+  if(low > high) {
+    return -1;
+  }
+  int mid = (low + high) / 2;
+  int *ptr = contents + mid;
+  if(*ptr == toFind) {
+    return mid;
+  }
+  if(*ptr < toFind) {
+    return binarySearch(contents, mid+1, high, toFind);
+  } else {
+    return binarySearch(contents, low, mid-1, toFind);
+  }
+}
+
+
 void msort(int *contents, int low, int high) {
   int mid = (low + high) / 2;
   if(low < high) {
@@ -138,5 +159,6 @@ int main(int argc, char *argv[]) {
     DArray_push(array, initial[i]);
   }
   DArray_msort(array);
-  DArray_print(array);
+  int index = DArray_binarySearch(array, 17);
+  printf("Index: %d\n", index);
 }

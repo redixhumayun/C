@@ -22,3 +22,6 @@ int partition(int *contents, int low, int high);
 void DArray_msort(DArray *array);
 void msort(int *contents, int low, int high);
 void merge(int *result, int low, int mid, int high);
+
+int DArray_binarySearch(DArray *array, int toFind);
+int binarySearch(int *contents, int low, int high, int toFind);

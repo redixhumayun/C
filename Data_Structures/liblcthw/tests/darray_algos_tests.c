@@ -15,14 +15,12 @@ DArray *create_array() {
   void *arr = (void *)(malloc(sizeof(void *) * 5));
   int i = 0;
   for(i = 0; i < 5; i++) {
-    *(int *)(arr+i) = initial[i];
+    *(int *)(arr + i * sizeof(int)) = initial[i];
   }
-
   for(i = 0; i < 5; i++) {
-    printf("Pushing: %d\n", *(int *)(arr+i));
-    DArray_push(result, (arr+i));
+    printf("Pushing: %d\n", *(int *)(arr + i*sizeof(int)));
+    DArray_push(result, (arr + i * sizeof(int)));
   }
-
   return result;
 }
 

@@ -17,6 +17,9 @@ int DArray_mergesort(DArray *array, DArray_compare cmp) {
 
 void quicksort(void *contents, int count, size_t elem, DArray_compare cmp) {
   int i = 0;
+  for(i = 0; i < count; i++) {
+    printf("Value: %d\n", *(int*)(((char *)contents + (i * sizeof(int)))));
+  }
   return;
 }
 

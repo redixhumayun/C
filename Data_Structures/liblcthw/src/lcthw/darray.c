@@ -64,6 +64,12 @@ void DArray_clear_destroy(DArray *array) {
 int DArray_push(DArray *array, void *el) {
     array->contents[array->end] = el;
     array->end++;
+    // printf("Value being pushed: %d\n", *(int *)(el));
+    // printf("***Printing array***\n");
+    // for(int i = 0; i < array->end; i++) {
+    //   printf("Printing value: %d\n", *(int *)(array->contents[i]));
+    // }
+    // printf("***Done printing array***\n");
 
     if(DArray_end(array) > DArray_max(array)) {
       return DArray_expand(array);

@@ -3,18 +3,6 @@
 
 #include "./list.h"
 
-// int main(int argc, char *argv[]) {
-//     int arr[] = {1,2,3,4};
-//     List *list = createList();
-//     int i = 0;
-//     for(i = 0; i < 4; i++) {
-//         appendList(list, arr[i]);
-//     }
-//     shiftList(list);
-//     printList(list);
-//     return 0;
-// }
-
 Node *createNode() {
     Node *node = malloc(sizeof(Node));
     if(node == NULL) {

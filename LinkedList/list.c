@@ -3,6 +3,14 @@
 
 #include "./list.h"
 
+void printList(List *list) {
+    Node *current = list->head;
+    while(current != NULL) {
+        printf("Value: %d\n", current->value);
+        current = current->next;
+    }
+}
+
 Node *createNode() {
     Node *node = malloc(sizeof(Node));
     if(node == NULL) {
@@ -35,6 +43,7 @@ void appendList(List *list, int num) {
     if(list->head->value == 0) {
         list->head->value = num;
         list->tail->value = num;
+        list->size += 1;
         return;
     }
     Node *current = createNode();
@@ -57,7 +66,7 @@ int popList(List *list) {
     int count = 0;
     Node *t;
     Node *temp = list->head;
-    while(count < list->size - 1) {
+    while(count < list->size - 2) {
         t = temp;
         temp = temp->next;
         count++;
@@ -67,6 +76,7 @@ int popList(List *list) {
     list->tail->next = NULL;
     t->next = list->tail;
     free(temp);
+    list->size -= 1;
     return valueRemoved;
 }
 
@@ -75,12 +85,49 @@ void shiftList(List *list) {
     list->head->value = temp->value;
     list->head->next = temp->next;
     free(temp);
+    list->size -= 1;
+    return;
 }
 
-void printList(List *list) {
-    Node *current = list->head;
-    while(current != NULL) {
-        printf("Value: %d\n", current->value);
-        current = current->next;
+void insertNode(List *list, int value, int index) {
+    if(list->size < index) {
+        printf("Index out of bounds\n");
+        exit(1);
     }
+    Node *newNode = createNode();
+    newNode->value = value;
+    Node *c = list->head;
+    Node *current = list->head;
+    int count = 0;
+    while(count < index) {
+        c = current;
+        current = current->next;
+        count++;
+    }
+    c->next = newNode;
+    newNode->next = current;
+    list->size += 1;
+    return;
+}
+
+void deleteNode(List *list, int index) {
+    int count = 0;
+    Node *c = list->head;
+    Node *current = list->head;
+    while(count < index) {
+        c = current;
+        current = current->next;
+        count++;
+    }
+    c->next = current->next;
+    free(current);
+    list->size -= 1;
+    return;
+}
+
+void reverseList(List *list, int offset) {
+    int count = 0;
+    Node *a = createNode();
+    Node *b = createNode();
+
 }

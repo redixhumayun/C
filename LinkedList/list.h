@@ -20,5 +20,8 @@ void appendList(List *, int num);
 int popList(List *);
 void shiftList(List *);
 void printList(List *);
+void insertNode(List *, int, int);
+void deleteNode(List *, int);
+void reverseList(List *, int);
 
 #endif

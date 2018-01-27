@@ -30,13 +30,13 @@ static char *test_list_shift(List *list) {
 
 static char *test_list_insert(List *list) {
     insertNode(list, 10, 1);
-    mu_assert("Node not inserted properly", list->size == 4);
+    mu_assert("Node not inserted properly", list->size == 5);
     return 0;
 }
 
 static char *test_list_delete(List *list) {
     deleteNode(list, 2);
-    mu_assert("Node not deleted properly", list->size == 3);
+    mu_assert("Node not deleted properly", list->size == 4);
     return 0;
 }
 

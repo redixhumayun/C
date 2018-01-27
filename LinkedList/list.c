@@ -90,7 +90,7 @@ void shiftList(List *list) {
 }
 
 void insertNode(List *list, int value, int index) {
-    if(list->size < index) {
+    if(index > list->size) {
         printf("Index out of bounds\n");
         exit(1);
     }
@@ -111,6 +111,10 @@ void insertNode(List *list, int value, int index) {
 }
 
 void deleteNode(List *list, int index) {
+    if(index > list->size) {
+        printf("Index out of bounds\n");
+        exit(1);
+    }
     int count = 0;
     Node *c = list->head;
     Node *current = list->head;

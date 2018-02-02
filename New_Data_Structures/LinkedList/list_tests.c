@@ -40,6 +40,28 @@ static char *test_list_delete(List *list) {
     return 0;
 }
 
+static char *test_list_swap(List *list) {
+  Node *a = createNode();
+  Node *b = createNode();
+  a->value = 1;
+  b->value = 2;
+  swapNodes(a, b);
+  mu_assert("Nodes not swapped properly", (a->value == 2 && b->value == 1));
+  return 0;
+}
+
+static char *test_list_reverse(List *list) {
+  reverseList(list, 0);
+  mu_assert("List not reversed properly", list->size == 4);
+  return 0;
+}
+
+static char *test_list_addAtBeg(List *list) {
+  addAtBeg(list, 9);
+  mu_assert("Value not added properly at beginning", list->head->value == 9);
+  return 0;
+}
+
 static char *all_tests() {
     List *list = createList();
     int arr[] = {4,5,6,2,1,3};
@@ -51,31 +73,49 @@ static char *all_tests() {
 
     mu_run_test(test_list_push, list);
     printf("****\n");
-    printf("Printing result of test_list_push\n");    
+    printf("Printing result of test_list_push\n");
     printList(list);
     printf("****\n");
 
     mu_run_test(test_list_pop, list);
     printf("****\n");
-    printf("Printing result of test_list_pop\n");    
+    printf("Printing result of test_list_pop\n");
     printList(list);
     printf("****\n");
 
     mu_run_test(test_list_shift, list);
     printf("****\n");
-    printf("Printing result of test_list_shift\n");    
+    printf("Printing result of test_list_shift\n");
     printList(list);
     printf("****\n");
 
     mu_run_test(test_list_insert, list);
     printf("****\n");
-    printf("Printing result of test_list_insert\n");    
+    printf("Printing result of test_list_insert\n");
     printList(list);
     printf("****\n");
 
     mu_run_test(test_list_delete, list);
     printf("****\n");
-    printf("Printing result of test_list_delete\n");    
+    printf("Printing result of test_list_delete\n");
+    printList(list);
+    printf("****\n");
+
+    mu_run_test(test_list_swap, list);
+    printf("****\n");
+    printf("Printing result of test_list_swap\n");
+    printList(list);
+    printf("****\n");
+
+    mu_run_test(test_list_reverse, list);
+    printf("****\n");
+    printf("Printing result of test_list_reverse\n");
+    printList(list);
+    printf("****\n");
+
+    mu_run_test(test_list_addAtBeg, list);
+    printf("****\n");
+    printf("Printing result of test_list_addAtBeg\n");
     printList(list);
     printf("****\n");
 

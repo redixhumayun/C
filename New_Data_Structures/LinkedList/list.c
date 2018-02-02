@@ -27,7 +27,7 @@ List *createList() {
     if(list == NULL) {
         return NULL;
     }
-    
+
     list->head = createNode();
     list->tail = createNode();
     if(list->head == NULL || list->tail == NULL) {
@@ -63,6 +63,13 @@ void appendList(List *list, int num) {
 }
 
 int popList(List *list) {
+  //remove only node present and return
+    if(list->size == 1) {
+      int valueRemoved = list->head->value;
+      list->head->value = 0;
+      list->tail->value = 0;
+      return valueRemoved;
+    }
     int count = 0;
     Node *t;
     Node *temp = list->head;
@@ -130,8 +137,41 @@ void deleteNode(List *list, int index) {
 }
 
 void reverseList(List *list, int offset) {
-    int count = 0;
+    int retVal = offset;
+    int offset_2 = (list->size - 1) - offset;
+    //base condition
+    if(offset > offset_2) {
+      return;
+    }
     Node *a = createNode();
+    a = list->head;
     Node *b = createNode();
+    b = list->head;
+    while(offset != 0) {
+      a = a->next;
+      offset--;
+    }
+    while(offset_2 != 0) {
+      b = b->next;
+      offset_2--;
+    }
+    swapNodes(a, b);
+    return reverseList(list, retVal + 1);
+}
 
+void swapNodes(Node *a, Node *b) {
+  int temp = a->value;
+  a->value = b->value;
+  b->value = temp;
+  return;
+}
+
+void addAtBeg(List *list, int num) {
+  Node *temp = createNode();
+  Node *h = list->head;
+  temp->value = num;
+  temp->next = h;
+  list->head = temp;
+  free(temp);
+  return;
 }

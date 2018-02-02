@@ -23,5 +23,7 @@ void printList(List *);
 void insertNode(List *, int, int);
 void deleteNode(List *, int);
 void reverseList(List *, int);
+void swapNodes(Node *, Node *);
+void addAtBeg(List *, int);
 
 #endif

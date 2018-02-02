@@ -4,7 +4,9 @@
 #define mu_assert(message, test) do { if(!(test)) return message; } while(0)
 #define mu_run_test(test, args) do { char *message = test(args); tests_run++; \
                                 if(message) return message; } while(0)
-                                
+#define mu_run_test_noargs(test) do { char *message = test(); tests_run++; \
+                                if(message) return message; } while(0)
+
 #define RUN_TESTS(name) int main(int argc, char *argv[]) {\
     argc = 1; \
     printf("----- RUNNING: %s", argv[0]);\

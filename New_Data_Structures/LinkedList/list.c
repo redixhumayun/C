@@ -87,13 +87,14 @@ int popList(List *list) {
     return valueRemoved;
 }
 
-void shiftList(List *list) {
+int shiftList(List *list) {
+    int value = list->head->value;
     Node *temp = list->head->next;
     list->head->value = temp->value;
     list->head->next = temp->next;
     free(temp);
     list->size -= 1;
-    return;
+    return value;
 }
 
 void insertNode(List *list, int value, int index) {

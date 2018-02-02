@@ -18,7 +18,7 @@ List *createList();
 Node *createNode();
 void appendList(List *, int num);
 int popList(List *);
-void shiftList(List *);
+int shiftList(List *);
 void printList(List *);
 void insertNode(List *, int, int);
 void deleteNode(List *, int);

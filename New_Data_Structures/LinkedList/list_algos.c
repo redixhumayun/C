@@ -4,20 +4,21 @@
 #include "./list.h"
 #include "./list_algos.h"
 
-void mergeLinkedLists(List *list_a, List *list_b, List *list_c) {
-  mergeSort(list_a->head);
+Node *mergeLinkedLists(List *list_a) {
+  mergeSort(&(list_a->head));
+  return list_a->head;
 }
 
-void mergeSort(Node *head) {
-  if(head == NULL || head->next == NULL) {
+void mergeSort(Node **head) {
+  if(head == NULL || (*head)->next == NULL) {
     return;
   }
   Node *a = createNode();
   Node *b = createNode();
-  getMiddle(head, &a, &b);
-  mergeSort(a);
-  mergeSort(b);
-  mergeLists(a, b);
+  getMiddle(*head, &a, &b);
+  mergeSort(&a);
+  mergeSort(&b);
+  *head = mergeLists(a, b);
 }
 
 Node *mergeLists(Node *a, Node *b) {

@@ -36,12 +36,47 @@ static char *test_array_pop(Array *array) {
     return 0;
 }
 
+static char *test_array_get(Array *array) {
+    int arr[] = {5,6,2,4,1, -1};
+    initArray(array, &arr);
+    void *ptr = get(array, 2);
+    mu_assert("Array value not got properly", *(int *)(ptr) == 2);
+    return 0;
+}
+
+static char *test_array_set(Array *array){
+    int arr[] = {5,6,2,4,1, -1};
+    initArray(array, &arr);
+    int num = 11;
+    void *ptr = &num;
+    int index = 1;
+    set(array, index, ptr);
+    int valueToCheck = *(int *)(array->items[index]);
+    mu_assert("Array value not set properly", valueToCheck == num);
+    return 0;
+}
+
+static char *test_array_massiveValueTest(Array *array) {
+    int arr[] = {5,6,2,4,1, -1};
+    initArray(array, &arr);
+    int i = 0;
+    for(i = 0; i < 100; i++) {
+        void *ptr = &i;
+        push(array, ptr);
+    }
+    mu_assert("Massive value test failed", array->size == 106);
+    return 0;
+}
+
 static char *all_tests() {
     Array *array = createArray(10);
     mu_run_test(test_array_create, array);
     mu_run_test(test_array_initArray, array);
     mu_run_test(test_array_push, array);
     mu_run_test(test_array_pop, array);
+    mu_run_test(test_array_get, array);
+    mu_run_test(test_array_set, array);
+    mu_run_test(test_array_massiveValueTest, array);
     return 0;
 }
 

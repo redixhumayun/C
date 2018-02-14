@@ -5,7 +5,7 @@
                 "name": "(lldb) Launch",
                 "type": "cppdbg",
                 "request": "launch",
-                "program": "${workspaceRoot}/LinkedList/a.out",
+                "program": "${workspaceRoot}/New_Data_Structures/DynamicArray/d",
                 "args": [],
                 "stopAtEntry": true,
                 "cwd": "${workspaceRoot}",

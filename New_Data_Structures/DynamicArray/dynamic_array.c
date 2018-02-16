@@ -47,7 +47,6 @@ void printArray(Array *array) {
 
 void doubleArray(Array *array) {
     array->capacity *= 2;
-    printf("New Capacity: %d\n", array->capacity);
     void **items = realloc(array->items, array->capacity * sizeof *items);
     if(items == NULL) {
         exit(1);
@@ -84,7 +83,7 @@ void *get(Array *array, int index) {
 
 void set(Array *array, int index, void *item) {
     if(index >= array->size - 1) {
-        printf("Out bounds exception");
+        printf("Out of bounds exception");
         exit(1);
     }
     array->items[index] = item;

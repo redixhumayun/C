@@ -22,5 +22,6 @@ typedef struct HashTable {
 
 HashTable *createHashTable(int);
 int createHash(value v, type t);
+int hashString(char *);
 
 #endif

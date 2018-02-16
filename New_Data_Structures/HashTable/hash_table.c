@@ -10,6 +10,16 @@ HashTable *createHashTable(int size) {
     return ht;
 }
 
+int hashString(char *str) {
+    unsigned int hash = 0;
+    int c;
+
+    while ((c = *str++)) {
+        hash += c;
+    }
+    return hash;
+}
+
 int createHash(value v, type t) {
     switch(t) {
         case num_int:
@@ -19,7 +29,7 @@ int createHash(value v, type t) {
             return round(fmod(v.f, 10.0));
             break;
         case string:
-            printf("The string is: %s\n", v.s);
+            return hashString(&v.s[0]);
             break;
         default:
             break;

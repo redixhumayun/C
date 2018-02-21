@@ -3,7 +3,10 @@
 #include "./dynamic_array.h"
 
 Array *createArray(int capacity) {
-    Array *array = malloc(sizeof(Array *));
+    Array *array = malloc(sizeof(Array));
+    if(array == NULL) {
+        exit(1);
+    }
     array->capacity = capacity;
     array->size = 0;
     void **items = malloc(sizeof(void *) * array->capacity *  sizeof *items);

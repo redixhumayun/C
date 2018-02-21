@@ -14,13 +14,7 @@ typedef enum {
     string
 } type;
 
-//the hashtable itself which will be comprised of 10 dynamic arrays
-typedef struct HashTable {
-    Array *table[10];
-    int size;
-} HashTable;
-
-HashTable *createHashTable(int);
+Array **createHashTable(int);
 int createHash(value v, type t);
 int hashString(char *);
 

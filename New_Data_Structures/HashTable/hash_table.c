@@ -4,10 +4,16 @@
 #include "./hash_table.h"
 #include "../DynamicArray/dynamic_array.h"
 
-HashTable *createHashTable(int size) {
-    HashTable *ht = malloc(sizeof(HashTable *));
-    ht->size = size;
-    return ht;
+Array **createHashTable(int size) {
+    Array **array = malloc(sizeof(Array) * 10);
+    if(array == NULL) {
+        exit(1);
+    }
+    int i = 0;
+    for(i = 0; i < size; i++) {
+        array[i] = createArray(size);
+    }
+    return array;
 }
 
 int hashString(char *str) {
@@ -29,7 +35,7 @@ int createHash(value v, type t) {
             return round(fmod(v.f, 10.0));
             break;
         case string:
-            return hashString(&v.s[0]);
+            return hashString(&v.s[0]) % 10;
             break;
         default:
             break;
@@ -38,9 +44,10 @@ int createHash(value v, type t) {
 }
 
 int main(int argc, char *argv[]) {
-    int size = 10;
-    value v = { .s = "Zaid" };
-    HashTable *ht = createHashTable(size);
-    int hash = createHash(v, string);
+    Array **ptr = createHashTable(10);
+    int i = 0;
+    for(i = 0; i < 10; i++) {
+        printf("i: %d capacity: %d\n", i, ptr[i]->capacity);
+    }
     return 0;
 }

@@ -4,18 +4,17 @@
 
 typedef union Value {
     int i; //integer
-    float f; //float
-    char s[20]; //char array (string)
+    char *s; //char array (string)
 } value;
 
 typedef enum {
     num_int, 
-    num_float, 
     string
 } type;
 
 Array **createHashTable(int);
 int createHash(value v, type t);
 int hashString(char *);
+void insertValue(Array **, int, value, type);
 
 #endif

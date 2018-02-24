@@ -61,6 +61,7 @@ void push(Array *array, void *value) {
     if(array->capacity - array->size == 2) {
         doubleArray(array);
     }
+    printf("String: %s\n", (char *)(value));
     void *temp = array->items[array->size - 1];
     array->items[array->size - 1] = value;
     array->items[array->size] = temp;

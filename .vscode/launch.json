@@ -5,7 +5,7 @@
                 "name": "(lldb) Launch",
                 "type": "cppdbg",
                 "request": "launch",
-                "program": "${workspaceRoot}/New_Data_Structures/HashTable/hash",
+                "program": "${workspaceRoot}/New_Data_Structures/BinaryTree/binary",
                 "args": [],
                 "stopAtEntry": true,
                 "cwd": "${workspaceRoot}",

@@ -56,6 +56,12 @@ static char *test_list_reverse(List *list) {
   return 0;
 }
 
+static char *test_list_reverseInPlace(List *list) {
+    reverseListInPlaceHelper(list->head);
+    mu_assert("List not revesed properly in place", list->head->next == NULL);
+    return 0;
+}
+
 static char *test_list_addAtBeg(List *list) {
   addAtBeg(list, 9);
   mu_assert("Value not added properly at beginning", list->head->value == 9);
@@ -105,6 +111,9 @@ static char *all_tests() {
     printf("****\n");
     printf("Printing result of test_list_swap\n");
     printList(list);
+    printf("****\n");
+
+    mu_run_test(test_list_reverseInPlace, list);
     printf("****\n");
 
     mu_run_test(test_list_reverse, list);

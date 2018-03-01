@@ -160,6 +160,24 @@ void reverseList(List *list, int offset) {
     return reverseList(list, retVal + 1);
 }
 
+void reverseListInPlace(Node *head, Node *prev) {
+    //base case
+    if(head->next == NULL) {
+        return;
+    }
+    prev = head;
+    head = head->next;
+    reverseListInPlace(head, prev);
+    head->next = prev;
+    return;
+}
+
+void reverseListInPlaceHelper(Node *head) {
+    reverseListInPlace(head, NULL);
+    head->next = NULL;
+    return;
+}
+
 void swapNodes(Node *a, Node *b) {
   int temp = a->value;
   a->value = b->value;

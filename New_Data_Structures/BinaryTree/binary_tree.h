@@ -2,7 +2,8 @@
 #define _binary_tree_h
 
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdbool.h>
+#include <stdlib.h>
 
 #define MAX(x, y) ((x) > (y)) ? (x) : (y)
 #define MIN(x, y) ((x) < (y)) ? (y) : (x)

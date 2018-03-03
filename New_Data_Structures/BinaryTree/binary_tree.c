@@ -29,7 +29,7 @@ void insertNode(Node *root, Node *node) {
             insertNode(root->right, node);
         }
     }
-} 
+}
 
 void inOrder(Node *root) {
     if(root == NULL) {
@@ -37,7 +37,7 @@ void inOrder(Node *root) {
     }
     inOrder(root->left);
     printf("Value: %d\n", root->data);
-    inOrder(root->right); 
+    inOrder(root->right);
 }
 
 void postOrder(Node *root) {
@@ -98,7 +98,7 @@ void printPathsHelper(Node *root, int path[], int pathLen) {
     path[pathLen] = root->data;
     pathLen++;
     if(root->left == NULL && root->right == NULL) {
-        int i = 0; 
+        int i = 0;
         printf("The path is\n");
         for(i = 0; i < pathLen; i++) {
             printf("%d\n", path[i]);
@@ -154,7 +154,7 @@ int sameTree(Node *root_a, Node *root_b) {
     }
     else if(root_a != NULL & root_b != NULL) {
         return (
-            root_a->data == root_b->data && 
+            root_a->data == root_b->data &&
             sameTree(root_a->left, root_b->left) &&
             sameTree(root_a->right, root_b->right)
         );
@@ -163,23 +163,23 @@ int sameTree(Node *root_a, Node *root_b) {
     }
 }
 
-int main (int argc, char *argv[]) {
-    Node *root = createNode(2);
-    int arr[] = {1, 3};
-    int i = 0;
-    int size = 2;
-    for(i = 0; i < size; i++) {
-        Node *node = createNode(arr[i]);
-        insertNode(root, node);
-    }
-    Node *root_2 = createNode(2);
-    int arr_2[] = {1, 3};
-    i = 0;
-    for(i = 0; i < size; i++) {
-        Node *node = createNode(arr_2[i]);
-        insertNode(root_2, node);
-    }
-    int result = sameTree(root, root_2);
-    printf("Result: %d\n", result);
-    return 0;
-}
+// int main (int argc, char *argv[]) {
+//     Node *root = createNode(2);
+//     int arr[] = {1, 3};
+//     int i = 0;
+//     int size = 2;
+//     for(i = 0; i < size; i++) {
+//         Node *node = createNode(arr[i]);
+//         insertNode(root, node);
+//     }
+//     Node *root_2 = createNode(2);
+//     int arr_2[] = {1, 3};
+//     i = 0;
+//     for(i = 0; i < size; i++) {
+//         Node *node = createNode(arr_2[i]);
+//         insertNode(root_2, node);
+//     }
+//     int result = sameTree(root, root_2);
+//     printf("Result: %d\n", result);
+//     return 0;
+// }

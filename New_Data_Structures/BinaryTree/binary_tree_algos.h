@@ -4,5 +4,6 @@
 void createTree(int *, int, int, int);
 void createTreeHelper(int *, int, int, Node *);
 int findMin(int *, int, int);
+int getMin(Node *, int, int, int);
 
 #endif

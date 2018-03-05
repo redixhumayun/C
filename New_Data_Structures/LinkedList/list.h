@@ -26,6 +26,7 @@ void reverseList(List *, int);
 void reverseListInPlace(Node *, Node *);
 void reverseListInPlaceHelper(Node *);
 void swapNodes(Node *, Node *);
+Node *findMiddleNode(Node *);
 void addAtBeg(List *, int);
 
 #endif

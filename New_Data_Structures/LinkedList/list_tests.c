@@ -68,6 +68,13 @@ static char *test_list_addAtBeg(List *list) {
   return 0;
 }
 
+static char *test_list_findMiddleNode(List *list) {
+    Node *node = findMiddleNode(list->head);
+    printf("Value: %d\n", node->value);
+    mu_assert("Value not found properly", node->value == 2);
+    return 0;
+}
+
 static char *all_tests() {
     List *list = createList();
     int arr[] = {4,5,6,2,1,3};
@@ -127,6 +134,8 @@ static char *all_tests() {
     printf("Printing result of test_list_addAtBeg\n");
     printList(list);
     printf("****\n");
+
+    mu_run_test(test_list_findMiddleNode, list);
 
     return 0;
 }

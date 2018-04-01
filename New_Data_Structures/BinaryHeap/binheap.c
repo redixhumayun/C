@@ -62,6 +62,12 @@ void bubble_down(priority_queue *q, int p)
 {
     int left = pq_left_child(q->arr[p]);
     int right = pq_right_child(q->arr[p]);
+    int minChild = -1;
+    if(left < right) {
+        minChild = left;
+    } else {
+        minChild = right;
+    }
 }
 
 void swap(priority_queue *q, int a, int b)
